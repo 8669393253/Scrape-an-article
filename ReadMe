@@ -1,0 +1,105 @@
+Overview
+
+This Python script scrapes the content of a specified article from a given URL, extracts its title and summary, and searches for similar articles using the Google Custom Search API. It analyzes the content of these articles to identify unique points compared to the original article using TF-IDF vectorization and cosine similarity. The results, including the original article's title and summary, are saved to a CSV file for further analysis.
+
+Features
+
+- **Article Scraping**: Extracts the title and main content from the specified article URL.
+- **Google Custom Search Integration**: Fetches links to similar articles based on the original article's title.
+- **Unique Points Extraction**: Uses TF-IDF and cosine similarity to identify unique points in the content of similar articles.
+- **CSV Output**: Saves the original article's title and summary to a CSV file named `article_summary.csv`.
+- **User-Friendly Output**: Prints unique points from the similar articles to the console for easy viewing.
+
+Requirements
+
+To run this script, you'll need:
+
+- Python 3.x
+- Required Python packages:
+  - `requests`
+  - `beautifulsoup4`
+  - `scikit-learn`
+  - `pandas` (optional, for enhanced data handling)
+
+Install the required packages using pip:
+
+```bash
+pip install requests beautifulsoup4 scikit-learn pandas
+```
+
+Setup Instructions
+
+Step 1: Obtain Google API Key and Search Engine ID
+
+1. Create a Google Cloud Project:
+   - Go to the [Google Cloud Console](https://console.cloud.google.com/).
+   - Create a new project.
+
+2. Enable the Custom Search API:
+   - Navigate to the API Library.
+   - Search for "Custom Search API" and enable it for your project.
+
+3. Generate API Key:
+   - Go to the "Credentials" section.
+   - Click on "Create Credentials" and select "API Key".
+
+4. Create a Custom Search Engine:
+   - Visit [Custom Search Engine](https://cse.google.com/cse/all).
+   - Create a new search engine and note down the Search Engine ID.
+
+5. Replace Placeholders in Code:
+   - Open the script and replace the following placeholders with your actual values:
+     ```python
+     API_KEY = 'your API key'  # Your generated API key
+     SEARCH_ENGINE_ID = 'search engine ID'  # Your Custom Search Engine ID
+     ```
+
+Step 2: Specify the Article URL
+
+- Update the URL in the script to the article you wish to analyze:
+  ```python
+  url = 'Enter your article url'  # Replace with your target article's URL
+  ```
+
+How to Run the Script
+
+1. Open your terminal or command prompt.
+2. Navigate to the directory where your script is located.
+3. Run the script:
+   ```bash
+   python your_script_name.py
+   ```
+
+4. Upon completion, the script will:
+   - Save the original article's title and summary to `article_summary.csv`.
+   - Print unique points from similar articles to the console.
+
+Example
+
+To analyze a specific article, modify the URL in the script:
+
+```python
+url = 'https://example.com/your-article-url'
+```
+
+Output
+
+- **CSV File**: The script generates a CSV file named `article_summary.csv` containing:
+  - Column 1: Article Title
+  - Column 2: Article Summary
+
+- **Console Output**: Displays unique points found in similar articles that do not match the original content.
+
+Considerations
+
+- **Compliance**: Ensure that your scraping complies with the terms of service of the website being scraped.
+- **API Limits**: Be aware of API rate limits and quotas imposed by Google.
+- **Threshold Adjustment**: The cosine similarity threshold (currently set to 0.5) can be modified based on your requirements to fine-tune the definition of uniqueness.
+
+License
+
+This project is open-source and available under the MIT License.
+
+Contributions
+
+Contributions are welcome! If you find any issues or want to enhance the functionality, feel free to submit.
